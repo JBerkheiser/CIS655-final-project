@@ -1,0 +1,19 @@
+steps:
+- name: "gcr.io/cloud-builders/gcloud"
+  timeout: "300s"
+  args:
+    - "compute"
+    - "ssh"
+    - "final-project-frontend"
+    - "--zone=us-east1-d"
+    - "--command"
+    - |
+      cd /var/www/html &&
+      sudo git fetch origin main &&
+      sudo git checkout main &&
+      sudo git sparse-checkout init --cone &&
+      sudo git sparse-checkout set frontend &&
+      sudo git pull origin main &&
+      sudo cp -r frontend/* . &&
+      sudo rm -rf frontend &&
+      sudo systemctl restart apache2
