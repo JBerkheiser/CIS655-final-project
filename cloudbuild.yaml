@@ -1,3 +1,5 @@
+options:
+  logs_bucket: gs://final-project-build-logs-bucket
 steps:
 - name: "gcr.io/cloud-builders/gcloud"
   timeout: "300s"
