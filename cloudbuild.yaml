@@ -9,13 +9,8 @@ steps:
     - "--command"
     - |
       cd /var/www/html &&
-      sudo git fetch origin main &&
-      sudo git checkout main &&
-      sudo git sparse-checkout init --cone &&
-      sudo git sparse-checkout set frontend &&
-      sudo git pull origin main &&
-      sudo cp -r frontend/* . &&
-      sudo rm -rf frontend &&
+      git pull origin main &&
+      sudo mv /var/www/html/frontend/index.html /var/www/html/ &&
       sudo systemctl restart apache2
 options:
   logging: CLOUD_LOGGING_ONLY
