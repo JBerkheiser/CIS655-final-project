@@ -1,5 +1,3 @@
-options:
-  logs_bucket: gs://final-project-build-logs-bucket
 steps:
 - name: "gcr.io/cloud-builders/gcloud"
   timeout: "300s"
@@ -19,3 +17,5 @@ steps:
       sudo cp -r frontend/* . &&
       sudo rm -rf frontend &&
       sudo systemctl restart apache2
+options:
+  logging: CLOUD_LOGGING_ONLY
