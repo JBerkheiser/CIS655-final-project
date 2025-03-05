@@ -13,7 +13,7 @@ function start()
 
 function getMathProblem()
 {
-        fetch("https://cis655-assignment8-synthesis.ue.r.appspot.com/get-problem")
+        fetch("https://cis655-vision-api-project.ue.r.appspot.com/get-problem")
         .then(response => response.json())
         .then(data =>
         {
