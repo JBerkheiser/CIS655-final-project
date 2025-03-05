@@ -14,5 +14,19 @@ steps:
       sudo mv /var/www/html/CIS655-final-project/frontend/index.html /var/www/html &&
       sudo mv /var/www/html/CIS655-final-project/frontend/script.js /var/www/html &&
       sudo systemctl restart apache2
+- name: "gcr.io/cloud-builders/git"
+  timeout: "300s"
+  args:
+    - "pull"
+    - "origin"
+    - "main"
+  dir: "/workspace/CIS655-final-project"
+- name: "gcr.io/cloud-builders/gcloud"
+  timeout: "300s"
+  args:
+    - "app"
+    - "deploy"
+    - "/workspace/CIS655-final-project/backend/app.yaml"
+    - "--quiet"
 options:
   logging: CLOUD_LOGGING_ONLY

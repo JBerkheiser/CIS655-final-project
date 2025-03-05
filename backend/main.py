@@ -8,8 +8,8 @@ CORS(app)
 @app.route("/get-problem")
 def getMathProblem():
     operatorList = ['+', '-', '*', '/']
-    firstNumber = random.randint(1, 100)
-    secondNumber = random.randint(1, 100)
+    firstNumber = 3
+    secondNumber = 3
     operator = random.choice(operatorList)
 
     retString = jsonify({"firstNumber": firstNumber, "secondNumber": secondNumber, "operator": operator})
