@@ -8,9 +8,9 @@ steps:
     - "--zone=us-east1-d"
     - "--command"
     - |
-      cd /var/www/html &&
+      cd /var/www/html/CIS655-final-project &&
       git pull origin main &&
-      sudo mv /var/www/html/frontend/index.html /var/www/html/ &&
+      sudo mv /var/www/html/CIS655-final-project/frontend/index.html /var/www/html/ &&
       sudo systemctl restart apache2
 options:
   logging: CLOUD_LOGGING_ONLY
