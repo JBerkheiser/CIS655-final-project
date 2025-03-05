@@ -9,8 +9,9 @@ steps:
     - "--command"
     - |
       cd /var/www/html/CIS655-final-project &&
+      git config --global --add safe.directory . &&
       git pull origin main &&
-      sudo mv /var/www/html/CIS655-final-project/frontend/index.html /var/www/html/ &&
+      sudo mv ./frontend/index.html . &&
       sudo systemctl restart apache2
 options:
   logging: CLOUD_LOGGING_ONLY
