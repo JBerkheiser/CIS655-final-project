@@ -16,6 +16,6 @@ steps:
       sudo systemctl restart apache2
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
-  args: ['-c', 'gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy CIS655-final-project/backend/app.yaml']
+  args: ['-c', 'pwd && ls && gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy CIS655-final-project/backend/app.yaml']
 options:
   logging: CLOUD_LOGGING_ONLY
