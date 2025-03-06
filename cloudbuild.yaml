@@ -33,7 +33,7 @@ steps:
   args:
     - "app"
     - "deploy"
-    - "/workspace/CIS655-final-project/backend/app.yaml"
+    - "/workspace/backend/app.yaml"
     - "--quiet"
 options:
   logging: CLOUD_LOGGING_ONLY
