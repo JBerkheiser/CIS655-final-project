@@ -21,12 +21,12 @@ steps:
 - name: "gcr.io/cloud-builders/git"
   args: ["ls-files"]
   dir: "/workspace"
-- name: "gcr.io/cloud-builders/git"
-  timeout: "300s"
-  args:
-    - "pull"
-    - "origin"
-    - "main"
+# - name: "gcr.io/cloud-builders/git"
+#   timeout: "300s"
+#   args:
+#     - "pull"
+#     - "origin"
+#     - "main"
   dir: "/workspace/CIS655-final-project"
 - name: "gcr.io/cloud-builders/gcloud"
   timeout: "300s"
