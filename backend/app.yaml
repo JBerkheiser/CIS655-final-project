@@ -22,6 +22,3 @@ automatic_scaling:
 
 # Optional: Custom Cloud Build timeout (can be adjusted)
 app_engine_apis: true
-
-# Optional: Enable logging
-entrypoint: gunicorn -b :$PORT main:app --access-logfile - --error-logfile -
