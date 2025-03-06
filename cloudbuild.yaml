@@ -34,6 +34,6 @@ steps:
     - "app"
     - "deploy"
     - "/workspace/backend/app.yaml"
-    - "--quiet"
+    - "--verbosity=debug"
 options:
   logging: CLOUD_LOGGING_ONLY
