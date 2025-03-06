@@ -1,2 +1,27 @@
-runtime: python312
-entrypoint: gunicorn -b :$PORT main:app
+runtime: python39  # Adjust to your Python version (python37, python38, python39, etc.)
+entrypoint: gunicorn -b :$PORT main:app  # Replace 'main' with the name of your main Python file
+
+handlers:
+- url: /static
+  static_dir: static  # Serves static files if you have a static directory
+
+- url: /.*
+  script: auto  # Routes all other requests to the application
+
+env_variables:
+  SECRET_KEY: "your-secret-key"
+
+instance_class: F2  # Adjust based on your resource needs (F1, F2, F4, etc.)
+automatic_scaling:
+  target_cpu_utilization: 0.65
+  min_instances: 1
+  max_instances: 5
+
+# Optional: Service Account if needed
+# service_account: my-service-account@appspot.gserviceaccount.com
+
+# Optional: Custom Cloud Build timeout (can be adjusted)
+app_engine_apis: true
+
+# Optional: Enable logging
+entrypoint: gunicorn -b :$PORT main:app --access-logfile - --error-logfile -
