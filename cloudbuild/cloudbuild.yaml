@@ -15,15 +15,15 @@ steps:
       sudo cp /var/www/html/CIS655-final-project/frontend/script.js /var/www/html &&
       sudo systemctl restart apache2
 - name: "gcr.io/cloud-builders/git"
-  args: ["ls -a"]
-  dir: "/workspace"
-# - name: "gcr.io/cloud-builders/git"
-#   timeout: "300s"
-#   args:
-#     - "pull"
-#     - "origin"
-#     - "main"
+  timeout: "300s"
+  args:
+    - "pull"
+    - "origin"
+    - "main"
   dir: "/workspace/CIS655-final-project"
+- name: "gcr.io/cloud-builders/git"
+  args: ["ls-files --full-name"]
+  dir: "/workspace"
 - name: "gcr.io/cloud-builders/gcloud"
   timeout: "300s"
   args:
