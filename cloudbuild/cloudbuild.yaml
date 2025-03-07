@@ -16,6 +16,6 @@ steps:
       sudo systemctl restart apache2
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
-  args: ['-c', 'gcloud app deploy --verbosity=debug ./backend/app.yaml']
+  args: ['-c', 'gcloud app deploy --verbosity=debug --project=cis655-vision-api-project --version=1 ./backend/app.yaml']
 options:
   logging: CLOUD_LOGGING_ONLY
