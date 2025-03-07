@@ -2,5 +2,5 @@ runtime: python312
 service: vision-backend
 
 automatic_scaling:
-  min_num_instances: 1
-  max_num_instances: 7
+  min_instances: 1
+  max_instances: 7
