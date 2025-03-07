@@ -1,2 +1,6 @@
 runtime: python312
 service: vision-backend
+
+instance_class: B1
+manual_scaling:
+  instances: 5
