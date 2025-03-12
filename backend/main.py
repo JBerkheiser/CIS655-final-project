@@ -1,29 +1,28 @@
 from flask import Flask, jsonify
 import requests
 from flask_cors import CORS
+from google.cloud import vision
 
 app = Flask(__name__)
 CORS(app)
 
 @app.route("/get-image-description")
-def getImageDescription():
-    projectID = "cis655-vision-api-project"
-    jsonContent = ""
-    contentType = "application/json; charset=utf-8"
-    visionAPIURL = "https://vision.googleapis.com/v1/images:annotate"
-    requestHeaders = {"x-goog-user-project": projectID, "Content-Type": contentType}
+def getImageDescription() -> vision.EntityAnnotation:
+    client = vision.ImageAnnotatorClient()
+    file_uri = "https://miamivalleytoday.com/wp-content/uploads/2023/10/132048163_web1_ideal-neighborhood.jpg"
 
-    with open("request.json", "r") as file:
-        jsonContent = file.read()
+    image = vision.Image()
+    image.source.image_uri = file_uri
 
-    generatedDescription = requests.post(visionAPIURL, json=jsonContent, headers=requestHeaders)
-    print(generatedDescription)
-    # curl -X POST \
-    # -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-    # -H "x-goog-user-project: PROJECT_ID" \
-    # -H "Content-Type: application/json; charset=utf-8" \
-    # https://vision.googleapis.com/v1/images:annotate -d @request.json
-    return generatedDescription
+    # Performs label detection on the image file
+    response = client.label_detection(image=image)
+    labels = response.label_annotations
+
+    print("Labels:")
+    for label in labels:
+        print(label.description)
+
+    return labels
 
 if __name__ == "__main__":
     app.run(host="localhost", port=8080, debug=True)

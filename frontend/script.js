@@ -4,6 +4,7 @@ function start()
         .then(response => response.json())
         .then(data =>
         {
+                console.log(data)
                 document.getElementById("Problem").innerText = data;
         })
         .catch(error => console.error("Error fetching description:", error));
