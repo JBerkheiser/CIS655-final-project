@@ -9,7 +9,7 @@ CORS(app)
 def getMathProblem():
     operatorList = ['+', '-', '*', '/']
     firstNumber = 3
-    secondNumber = 3
+    secondNumber = 45
     operator = random.choice(operatorList)
 
     retString = jsonify({"firstNumber": firstNumber, "secondNumber": secondNumber, "operator": operator})
