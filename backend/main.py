@@ -17,6 +17,7 @@ def getImageDescription():
         jsonContent = file.read()
 
     generatedDescription = requests.post(visionAPIURL, json=jsonContent, headers=requestHeaders)
+    print(generatedDescription)
     # curl -X POST \
     # -H "Authorization: Bearer $(gcloud auth print-access-token)" \
     # -H "x-goog-user-project: PROJECT_ID" \
