@@ -16,7 +16,7 @@ steps:
       sudo systemctl restart apache2
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
-  args: ['-c', 'gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy --account=berkheij@mail.gvsu.edu ./backend/app.yaml']
+  args: ['-c', 'gcloud app deploy --account=automated-build-account@cis655-vision-api-project.iam.gserviceaccount.com ./backend/app.yaml']
   timeout: '1600s'
 options:
   logging: CLOUD_LOGGING_ONLY
