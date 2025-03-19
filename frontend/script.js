@@ -2,13 +2,13 @@
 document.getElementById('fileInput').addEventListener('change', function(event)
 {
         var file = event.target.files[event.target.files.length - 1];
+        var image = URL.createObjectURL(file);
         var fileInfo = `
                 <p>File Name: ${file.name}</p>
                 <p>File Size: ${file.size} bytes</p>
                 <p>File Type: ${file.type}</p>
+                <p>File URL: ${image}</p>
         `;
-
-        var image = URL.createObjectURL(file);
         var imagePreview = `
                 <img src="${image}" alt="Could Not Load Image" width="500" height="600">
         `;
