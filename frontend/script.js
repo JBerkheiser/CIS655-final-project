@@ -6,7 +6,7 @@ function start()
         {
                 console.log(data)
 
-                document.getElementById("Problem").innerText = "Most likely: " + data[0].description + "with a score of" + data[0].score;
+                document.getElementById("Problem").innerText = "Most likely: " + data[0]['description'] + "with a score of" + data[0]['score'];
         })
         .catch(error => console.error("Error fetching description:", error));
 }
