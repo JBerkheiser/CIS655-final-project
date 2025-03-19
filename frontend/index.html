@@ -4,9 +4,11 @@
                 <div>
                         <p id="Problem"></p>
                         <div>
-                                <input type="text" id="answer">
-                                <button type="button" id="Start" onclick="start()">Start</button>
+                                <input type="file" name="file" id='fileInput' accept="image/*">
+                                <button type="button" id="Start" onclick="start()">Analyze</button>
                         </div>
+                        <div id="fileInfo"></div>
+                        <div id="preview"></div>
                 </div>
         </body>
         <script src="script.js"></script>

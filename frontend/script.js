@@ -1,3 +1,33 @@
+
+document.getElementById('fileInput').addEventListener('change', function(event)
+{
+        var file = event.target.files[event.target.files.length - 1];
+        var preview = document.getElementById('preview');
+        var fileInfo = `
+                <p>File Name: ${file.name}</p>
+                <p>File Size: ${file.size} bytes</p>
+                <p>File Type: ${file.type}</p>
+        `;
+
+        preview.innerHTML = '';
+        
+        var imageContainer = document.createElement('div');
+        imageContainer.style.marginBottom = '20px';
+
+        var image = document.createElement('img');
+        image.src = URL.createObjectURL(file);
+        image.style.height = '100px';
+        image.style.display = 'block';
+        image.style.marginBottom = '10px';
+
+        imageContainer.replaceChildren(image);
+        imageContainer.appendChild(fileInfo);
+
+        preview.appendChild(imageContainer);
+
+        document.getElementById('fileInfo').innerHTML = fileInfo;
+});
+
 function start()
 {
         fetch("https://cis655-vision-api-project.ue.r.appspot.com/get-image-description")
