@@ -8,13 +8,12 @@ document.getElementById('fileInput').addEventListener('change', function(event)
                 <p>File Type: ${file.type}</p>
         `;
 
-        var image = document.createElement('img');
-        image.src = URL.createObjectURL(file);
-        image.style.height = '100px';
-        image.style.display = 'block';
-        image.style.marginBottom = '10px';
+        var image = URL.createObjectURL(file);
+        var imagePreview = `
+                <img src="${image}" alt="Could Not Load Image">
+        `;
 
-        document.getElementById('preview').innerHTML = image;
+        document.getElementById('preview').innerHTML = imagePreview;
 
         document.getElementById('fileInfo').innerHTML = fileInfo;
 });
