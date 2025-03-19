@@ -14,7 +14,7 @@ document.getElementById('fileInput').addEventListener('change', function(event)
         image.style.display = 'block';
         image.style.marginBottom = '10px';
 
-        preview.getElementById('preview').innerHTML = image;
+        document.getElementById('preview').innerHTML = image;
 
         document.getElementById('fileInfo').innerHTML = fileInfo;
 });
