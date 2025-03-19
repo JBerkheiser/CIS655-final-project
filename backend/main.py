@@ -18,11 +18,11 @@ def getImageDescription() -> vision.EntityAnnotation:
     response = client.label_detection(image=image)
     labels = response.label_annotations
 
-    print("Labels:")
-    for label in labels:
-        print(label.description)
+    print(response)
 
-    return labels
+    label_data = [{"description": label.description, "score": label.score} for label in labels]
+
+    return jsonify({"labels": label_data}) 
 
 if __name__ == "__main__":
     app.run(host="localhost", port=8080, debug=True)
