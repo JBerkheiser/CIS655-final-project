@@ -10,7 +10,7 @@ document.getElementById('fileInput').addEventListener('change', function(event)
 
         var image = URL.createObjectURL(file);
         var imagePreview = `
-                <img src="${image}" alt="Could Not Load Image">
+                <img src="${image}" alt="Could Not Load Image" width="500" height="600">
         `;
 
         document.getElementById('preview').innerHTML = imagePreview;
