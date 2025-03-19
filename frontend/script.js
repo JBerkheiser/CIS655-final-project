@@ -2,17 +2,11 @@
 document.getElementById('fileInput').addEventListener('change', function(event)
 {
         var file = event.target.files[event.target.files.length - 1];
-        var preview = document.getElementById('preview');
         var fileInfo = `
                 <p>File Name: ${file.name}</p>
                 <p>File Size: ${file.size} bytes</p>
                 <p>File Type: ${file.type}</p>
         `;
-
-        preview.innerHTML = '';
-        
-        var imageContainer = document.createElement('div');
-        imageContainer.style.marginBottom = '20px';
 
         var image = document.createElement('img');
         image.src = URL.createObjectURL(file);
@@ -20,10 +14,7 @@ document.getElementById('fileInput').addEventListener('change', function(event)
         image.style.display = 'block';
         image.style.marginBottom = '10px';
 
-        imageContainer.appendChild(image);
-        imageContainer.appendChild(fileInfo);
-
-        preview.appendChild(imageContainer);
+        preview.getElementById('preview').innerHTML = image;
 
         document.getElementById('fileInfo').innerHTML = fileInfo;
 });
