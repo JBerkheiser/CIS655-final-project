@@ -20,7 +20,7 @@ document.getElementById('fileInput').addEventListener('change', function(event)
         image.style.display = 'block';
         image.style.marginBottom = '10px';
 
-        imageContainer.replaceChildren(image);
+        imageContainer.appendChild(image);
         imageContainer.appendChild(fileInfo);
 
         preview.appendChild(imageContainer);
