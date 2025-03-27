@@ -1,0 +1,18 @@
+body
+{
+    background-color:#ecd4b6;
+}
+.pageHeader
+{
+    margin: 10px;
+    border-bottom-style: solid;
+    border-color: black;
+}
+.title
+{
+    text-align: center;
+}
+.howTo
+{
+    margin: 10px;
+}

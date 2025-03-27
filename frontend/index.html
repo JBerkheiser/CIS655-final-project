@@ -1,14 +1,30 @@
+<!DOCTYPE html>
 <html>
+        <head>
+                <link rel="stylesheet" href="frontendStyling.css">
+        </head>
         <body>
-                <h1 id="Title">Enter a photo</h1>
-                <div>
-                        <p id="Problem"></p>
-                        <div>
-                                <button type="button" id="Start" onclick="start()">Analyze</button>
-                                <input type="file" name="file" id='fileInput' accept="image/*">
+                <div class="pageHeader">   
+                        <div class="title">
+                                <h1 id="Title">Photo Analyzer</h1>
                         </div>
-                        <div id="fileInfo"></div>
-                        <div id="preview"></div>
+                        <div class="howTo">
+                                <h2 id="SubTitle">How to use</h2>
+                                <p>Upload a photo and then select how you want it analyzed</p>
+                        </div>
+                </div>
+                <div class="centerPage">
+                        <div class="currentImage">
+                                <div>
+                                        <button type="button" id="Start" onclick="start()">Analyze</button>
+                                        <input type="file" name="file" id='fileInput' accept="image/*">
+                                </div>
+                                <div id="fileInfo"></div>
+                                <div id="preview"></div>  
+                        </div>
+                        <div class="previousImages">
+                                
+                        </div>
                 </div>
         </body>
         <script src="script.js"></script>
