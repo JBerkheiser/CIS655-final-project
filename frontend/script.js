@@ -18,7 +18,7 @@ document.getElementById('fileInput').addEventListener('change', function(event)
         document.getElementById('fileInfo').innerHTML = fileInfo;
 });
 
-async function start()
+async function analyzeLabels()
 {
         const imageInput = document.getElementById('fileInput');
         if(!imageInput.files.length)
@@ -40,6 +40,34 @@ async function start()
                 const result = await response.json();
                 console.log("Server Response:", result);
                 document.getElementById("Output").innerText = "Most likely: " + result['labels'][0]['description'] + " with a score of: " + result['labels'][0]['score'];
+        } catch(error)
+        {
+                console.error("Error fetching description:", error);
+        }
+}
+
+async function analyzeLogos()
+{
+        const imageInput = document.getElementById('fileInput');
+        if(!imageInput.files.length)
+        {
+                alert("Please select a file");
+                return;
+        } 
+
+        const formData = new FormData();
+        formData.append("file", imageInput.files[imageInput.files.length - 1]);
+
+        try
+        {
+                const response = await fetch("https://cis655-vision-api-project.ue.r.appspot.com/get-logo-description", 
+                {
+                        method: "POST",
+                        body: formData,
+                })
+                const result = await response.json();
+                console.log("Server Response:", result);
+                document.getElementById("Output").innerText = "Most likely: " + result['logos'][0]['description'] + " with a score of: " + result['logos'][0]['score'];
         } catch(error)
         {
                 console.error("Error fetching description:", error);

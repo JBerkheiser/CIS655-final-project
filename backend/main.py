@@ -24,5 +24,24 @@ def getImageDescription() -> vision.EntityAnnotation:
 
     return jsonify({"labels": label_data}) 
 
+@app.route("/get-logo-description", methods=["POST"])
+def getLogoDescription() -> vision.EntityAnnotation:
+    if "file" not in request.files:
+        return jsonify({"error": "No file part"}), 400
+    file = request.files["file"]
+    if file.filename == "":
+        return jsonify({"error": "No file part"}), 400
+    
+    image_bytes = file.read()
+    image = vision.Image(content=image_bytes)
+
+    client = vision.ImageAnnotatorClient()
+    response = client.label_detection(image=image)
+    logos = response.logo_annotations
+
+    logo_data = [{"description": logo.description, "score": logo.score} for logo in logos]
+
+    return jsonify({"logos": logo_data}) 
+
 if __name__ == "__main__":
     app.run(host="localhost", port=8080, debug=True)
