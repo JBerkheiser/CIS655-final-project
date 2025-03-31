@@ -13,6 +13,7 @@ steps:
       git pull origin main &&
       sudo cp /var/www/html/CIS655-final-project/frontend/index.html /var/www/html &&
       sudo cp /var/www/html/CIS655-final-project/frontend/script.js /var/www/html &&
+      sudo cp /var/www/html/CIS655-final-project/frontend/frontendStyling.css /var/www/html &&
       sudo systemctl restart apache2
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
