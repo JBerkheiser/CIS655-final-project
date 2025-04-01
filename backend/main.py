@@ -36,7 +36,7 @@ def getLogoDescription() -> vision.EntityAnnotation:
     image = vision.Image(content=image_bytes)
 
     client = vision.ImageAnnotatorClient()
-    response = client.label_detection(image=image)
+    response = client.logo_detection(image=image)
     logos = response.logo_annotations
 
     logo_data = [{"description": logo.description, "score": logo.score} for logo in logos]
