@@ -14,8 +14,6 @@ document.getElementById('fileInput').addEventListener('change', function(event)
         `;
 
         document.getElementById('preview').innerHTML = imagePreview;
-
-        document.getElementById('fileInfo').innerHTML = fileInfo;
 });
 
 async function analyzeLabels()
