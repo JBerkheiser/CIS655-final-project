@@ -23,12 +23,31 @@
                                         <div id="preview"></div>  
                                 </div>
                                 <div class="buttons">
-                                        <button type="button" id="Labels" onclick="analyzeLabels()">Analyze Image Content</button>
-                                        <button type="button" id="Emotion" onclick="analyzeEmotion()">Analyze Emotion</button>
-                                        <button type="button" id="Landmark" onclick="analyzeLandmark()">Analyze Landmark</button>
-                                        <button type="button" id="Logos" onclick="analyzeLogos()">Analyze Logos</button>
-                                        <button type="button" id="Text" onclick="analyzeText()">Analyze Text</button>
-                                        <button type="button" id="Batch" onclick="analyzeAll()">Analyze All</button>
+                                        <div class="checkboxes">
+                                                <Input type="checkbox" class="checkbox" id="Labels" value="Labels">
+                                                        <label for="Labels">Labels</label> 
+                                        </div>
+                                        <div class="checkboxes">
+                                                <Input type="checkbox" class="checkbox" id="Faces" value="Faces">
+                                                        <label for="Faces">Faces</label>
+                                        </div>
+                                        <div class="checkboxes">
+                                                <Input type="checkbox" class="checkbox" id="Landmark" value="Landmark">
+                                                        <label for="Landmark">Landmarks</label>
+                                        </div>
+                                        <div class="checkboxes">
+                                                <Input type="checkbox" class="checkbox" id="Logos" value="Logos">
+                                                        <label for="Logos">Logos</label>
+                                        </div>
+                                        <div class="checkboxes">
+                                                <Input type="checkbox" class="checkbox" id="Text" value="Text">
+                                                        <label for="Text">Text</label>
+                                        </div>
+                                        <div class="checkboxes">
+                                                <Input type="checkbox" class="checkbox" id="Objects" value="Objects">
+                                                        <label for="Objects">Objects</label>
+                                        </div>
+                                        <button type="button" id="Batch" onclick="analyzeImage()">Analyze</button>
                                 </div>
                                 <div class="History">
                                         <p>history</p>

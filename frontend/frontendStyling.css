@@ -50,6 +50,16 @@ input
     flex-direction: column;
     justify-content: space-evenly;
 }
+.checkboxes
+{
+    display: flex;
+    align-items: center;
+}
+.checkbox
+{
+    margin: 0px;
+    margin-right: 5px;
+}
 .bottomPage
 {
     flex: 1;
