@@ -1,3 +1,11 @@
+var queryTable = [
+        {id: "LABEL_DETECTION", checked: 0},
+        {id: "FACE_DETECTION", checked: 0},
+        {id: "LANDMARK_DETECTION", checked: 0},
+        {id: "LOGO_DETECTION", checked: 0},
+        {id: "DOCUMENT_TEXT_DETECTION", checked: 0},
+        {id: "OBJECT_LOCALIZATION", checked: 0},
+];
 
 document.getElementById('fileInput').addEventListener('change', function(event)
 {
@@ -16,8 +24,8 @@ document.getElementById('fileInput').addEventListener('change', function(event)
         document.getElementById('preview').innerHTML = imagePreview;
 });
 
-async function analyzeLabels()
-{
+async function analyzeImage()
+{       
         const imageInput = document.getElementById('fileInput');
         if(!imageInput.files.length)
         {
@@ -25,8 +33,20 @@ async function analyzeLabels()
                 return;
         } 
 
+        getCheckedBoxes();
+
         const formData = new FormData();
         formData.append("file", imageInput.files[imageInput.files.length - 1]);
+
+        var detectionTasks = []
+        for(var i = 0; i < queryTable.length; i++)
+        {
+                if(queryTable[i].checked === true)
+                {
+                        detectionTasks.push(queryTable[i].id);
+                }
+        }
+        formData.append("tasks", detectionTasks);
 
         try
         {
@@ -44,30 +64,14 @@ async function analyzeLabels()
         }
 }
 
-async function analyzeLogos()
+function getCheckedBoxes()
 {
-        const imageInput = document.getElementById('fileInput');
-        if(!imageInput.files.length)
+        console.log('The checkboxes have the following values:\n');
+        var checkboxes = document.getElementsByClassName("checkbox")
+        for(var i = 0; i < checkboxes.length; i++)
         {
-                alert("Please select a file");
-                return;
-        } 
-
-        const formData = new FormData();
-        formData.append("file", imageInput.files[imageInput.files.length - 1]);
-
-        try
-        {
-                const response = await fetch("https://cis655-vision-api-project.ue.r.appspot.com/get-logo-description", 
-                {
-                        method: "POST",
-                        body: formData,
-                })
-                const result = await response.json();
-                console.log("Server Response:", result);
-                document.getElementById("Output").innerText = "Most likely: " + result['logos'][0]['description'] + " with a score of: " + result['logos'][0]['score'];
-        } catch(error)
-        {
-                console.error("Error fetching description:", error);
+                queryTable[i].checked = checkboxes[i].checked;
+                console.log(queryTable[i].id + ':' + queryTable[i].checked)
         }
+
 }
