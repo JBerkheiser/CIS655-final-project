@@ -14,6 +14,42 @@ RESPONSE_TABLE = {
     'OBJECT_LOCALIZATION': 'localized_object_annotations'
 }
 
+def getData(task, annotations):
+    result = []
+    for annotation in annotations:
+        task_data = {}
+        
+        if task == "LABEL_DETECTION" or task == "LOGO_DETECTION":
+            task_data["description"] = annotation.description
+            task_data["score"] = annotation.score
+        elif task == "FACE_DETECTION":
+            task_data["rollAngle"] = annotation.rollAngle
+            task_data["panAngle"] = annotation.panAngle
+            task_data["tiltAngle"] = annotation.tiltAngle
+            task_data["detectionConfidence"] = annotation.detectionConfidence
+            task_data["landmarkingConfidence"] = annotation.landmarkingConfidence
+            task_data["joyLikelihood"] = annotation.joyLikelihood
+            task_data["sorrowLikelihood"] = annotation.sorrowLikelihood
+            task_data["angerLikelihood"] = annotation.angerLikelihood
+            task_data["surpriseLikelihood"] = annotation.surpriseLikelihood
+            task_data["underExposedLikelihood"] = annotation.underExposedLikelihood
+            task_data["blurredLikelihood"] = annotation.blurredLikelihood
+            task_data["headwearLikelihood"] = annotation.headwearLikelihood
+        elif task == "LANDMARK_DETECTION":
+            task_data["description"] = annotation.description
+            task_data["score"] = annotation.score
+            task_data["location"] = annotation.locations
+        elif task == "DOCUMENT_TEXT_DETECTION":
+            task_data["description"] = annotation.description
+            task_data["boundingPoly"] = annotation.bounding_poly
+        elif task == "OBJECT_LOCALIZATION":
+            task_data["name"] = annotation.name
+            task_data["score"] = annotation.score
+            task_data["boundingPoly"] = annotation.bounding_poly
+        
+        result.append(task_data)
+    return result
+
 @app.route("/get-image-description", methods=["POST"])
 def getImageDescription() -> vision.EntityAnnotation:
     if "file" not in request.files:
@@ -45,7 +81,9 @@ def getImageDescription() -> vision.EntityAnnotation:
         if task in RESPONSE_TABLE:
             result = RESPONSE_TABLE[task]
             if hasattr(response, result):
-                data[result] = getattr(response, result)
+                annotations = getattr(response, result)
+                if annotations:
+                    data[result] = getData(task, annotations)
     
     print("Results: ", data)
     return jsonify({"data": data})
