@@ -4,6 +4,7 @@ var queryTable = [
         {id: "LOGO_DETECTION", checked: 0, result: "logo_annotations", text: "Logos", descriptor: "description"},
         {id: "DOCUMENT_TEXT_DETECTION", checked: 0, result: "text_annotations", text: "Text", descriptor: "description"},
         {id: "OBJECT_LOCALIZATION", checked: 0, result: "localized_object_annotations", text: "Objects", descriptor: "name"},
+        {id: "GENERATE_DESCRIPTION", checked: 0},
 ];
 
 document.getElementById('fileInput').addEventListener('change', function(event)
@@ -75,11 +76,21 @@ function getCheckedBoxes()
 
 }
 
-function displayResults(tasks, result)
+function displayResults(result)
 {
         const resultDiv = document.getElementById('Results');
         resultDiv.innerHTML = '';
 
+        if(queryTable[queryTable.length - 1].checked == 1)
+        {
+                const sectionHeader = document.createElement('h4');
+                sectionHeader.className = "ResultsSubheader";
+                sectionHeader.innerText = "Generated Description";
+                resultDiv.appendChild(sectionHeader);
+
+                const sectionInfo = document.createElement('p');
+                sectionInfo.innerText = result.description
+        }
         for(var i = 0; i < queryTable.length; i++)
         {
                 const section = queryTable[i].result;

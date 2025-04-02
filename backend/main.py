@@ -44,6 +44,7 @@ def generateDescription(image, data):
 
 @app.route("/get-image-description", methods=["POST"])
 def getImageDescription() -> vision.EntityAnnotation:
+    generateTask = False
     if "file" not in request.files:
         return jsonify({"error": "No file part"}), 400
     file = request.files["file"]
@@ -59,6 +60,9 @@ def getImageDescription() -> vision.EntityAnnotation:
 
     features = []
     for task in tasks:
+        if task == "GENERATE_DESCRIPTION":
+            generateTask = True
+            continue
         feature = {"type": getattr(vision.Feature.Type, task)}
         features.append(feature)
     
@@ -78,10 +82,14 @@ def getImageDescription() -> vision.EntityAnnotation:
                     data[result] = getData(task, annotations)
     
     print("Results: ", data)
-    generatedDescription = generateDescription(image, data)
-    print("Description: ", generatedDescription)
 
-    return jsonify({"description": generatedDescription, "data": data})
+    if generateTask == True:
+        generatedDescription = generateDescription(image, data)
+        print("Description: ", generatedDescription)
+        return jsonify({"description": generatedDescription, "data": data})
+    else:
+        return jsonify({"data": data})
+
 
 if __name__ == "__main__":
     app.run(host="localhost", port=8080, debug=True)
