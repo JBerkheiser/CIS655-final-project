@@ -23,18 +23,18 @@ def getData(task, annotations):
             task_data["description"] = annotation.description
             task_data["score"] = annotation.score
         elif task == "FACE_DETECTION":
-            task_data["rollAngle"] = annotation.rollAngle
-            task_data["panAngle"] = annotation.panAngle
-            task_data["tiltAngle"] = annotation.tiltAngle
-            task_data["detectionConfidence"] = annotation.detectionConfidence
-            task_data["landmarkingConfidence"] = annotation.landmarkingConfidence
-            task_data["joyLikelihood"] = annotation.joyLikelihood
-            task_data["sorrowLikelihood"] = annotation.sorrowLikelihood
-            task_data["angerLikelihood"] = annotation.angerLikelihood
-            task_data["surpriseLikelihood"] = annotation.surpriseLikelihood
-            task_data["underExposedLikelihood"] = annotation.underExposedLikelihood
-            task_data["blurredLikelihood"] = annotation.blurredLikelihood
-            task_data["headwearLikelihood"] = annotation.headwearLikelihood
+            task_data["rollAngle"] = annotation.roll_angle
+            task_data["panAngle"] = annotation.pan_angle
+            task_data["tiltAngle"] = annotation.tilt_angle
+            task_data["detectionConfidence"] = annotation.detection_confidence
+            task_data["landmarkingConfidence"] = annotation.landmarking_confidence
+            task_data["joyLikelihood"] = annotation.joy_likelihood
+            task_data["sorrowLikelihood"] = annotation.sorrow_likelihood
+            task_data["angerLikelihood"] = annotation.anger_likelihood
+            task_data["surpriseLikelihood"] = annotation.surprise_likelihood
+            task_data["underExposedLikelihood"] = annotation.underExposed_likelihood
+            task_data["blurredLikelihood"] = annotation.blurred_likelihood
+            task_data["headwearLikelihood"] = annotation.headwear_likelihood
         elif task == "LANDMARK_DETECTION":
             task_data["description"] = annotation.description
             task_data["score"] = annotation.score

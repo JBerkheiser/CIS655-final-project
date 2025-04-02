@@ -1,10 +1,10 @@
 var queryTable = [
-        {id: "LABEL_DETECTION", checked: 0},
-        {id: "FACE_DETECTION", checked: 0},
-        {id: "LANDMARK_DETECTION", checked: 0},
-        {id: "LOGO_DETECTION", checked: 0},
-        {id: "DOCUMENT_TEXT_DETECTION", checked: 0},
-        {id: "OBJECT_LOCALIZATION", checked: 0},
+        {id: "LABEL_DETECTION", checked: 0, result: "label_annotations", text: "Labels"},
+        {id: "FACE_DETECTION", checked: 0, result: "face_annotations", text: "Facial Features"},
+        {id: "LANDMARK_DETECTION", checked: 0, result: "landmark_annotations", text: "Landmarks"},
+        {id: "LOGO_DETECTION", checked: 0, result: "logo_annotations", text: "Logos"},
+        {id: "DOCUMENT_TEXT_DETECTION", checked: 0, result: "text_annotations", text: "Text"},
+        {id: "OBJECT_LOCALIZATION", checked: 0, result: "localized_object_annotations", text: "Objects"},
 ];
 
 document.getElementById('fileInput').addEventListener('change', function(event)
@@ -61,6 +61,8 @@ async function analyzeImage()
         {
                 console.error("Error fetching description:", error);
         }
+
+        displayResults(detectionTasks, result);
 }
 
 function getCheckedBoxes()
@@ -73,4 +75,26 @@ function getCheckedBoxes()
                 console.log(queryTable[i].id + ':' + queryTable[i].checked)
         }
 
+}
+
+function displayResults(tasks, result)
+{
+        const resultDiv = document.getElementById('Results');
+        resultDiv.innerHTML = '';
+
+        for(var i = 0; i < queryTable.length; i++)
+        {
+                if(queryTable[i].checked === true)
+                {
+                        const section = queryTable[i].result
+                        const sectionHeader = document.createElement('p');
+                        sectionHeader.innerText = queryTable[i].text;
+
+                        const sectionInfo = document.createElement('p');
+                        sectionInfo.innerText = result[section];
+
+                        resultDiv.appendChild(sectionHeader);
+                        resultDiv.appendChild(sectionInfo);
+                }
+        }
 }
