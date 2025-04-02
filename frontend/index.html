@@ -25,27 +25,29 @@
                                 </div>
                                 <div class="buttons">
                                         <h3 class="SectionsHeader">Analysis Options</h3>
-                                        <div class="checkboxes">
-                                                <Input type="checkbox" class="checkbox" id="Labels" value="Labels">
-                                                        <label for="Labels">Labels</label> 
+                                        <div class="Options">
+                                                <div class="checkboxes">
+                                                        <Input type="checkbox" class="checkbox" id="Labels" value="Labels">
+                                                                <label for="Labels">Labels</label> 
+                                                </div>
+                                                <div class="checkboxes">
+                                                        <Input type="checkbox" class="checkbox" id="Landmark" value="Landmark">
+                                                                <label for="Landmark">Landmarks</label>
+                                                </div>
+                                                <div class="checkboxes">
+                                                        <Input type="checkbox" class="checkbox" id="Logos" value="Logos">
+                                                                <label for="Logos">Logos</label>
+                                                </div>
+                                                <div class="checkboxes">
+                                                        <Input type="checkbox" class="checkbox" id="Text" value="Text">
+                                                                <label for="Text">Text</label>
+                                                </div>
+                                                <div class="checkboxes">
+                                                        <Input type="checkbox" class="checkbox" id="Objects" value="Objects">
+                                                                <label for="Objects">Objects</label>
+                                                </div>
+                                                <button type="button" id="Batch" onclick="analyzeImage()">Analyze</button>
                                         </div>
-                                        <div class="checkboxes">
-                                                <Input type="checkbox" class="checkbox" id="Landmark" value="Landmark">
-                                                        <label for="Landmark">Landmarks</label>
-                                        </div>
-                                        <div class="checkboxes">
-                                                <Input type="checkbox" class="checkbox" id="Logos" value="Logos">
-                                                        <label for="Logos">Logos</label>
-                                        </div>
-                                        <div class="checkboxes">
-                                                <Input type="checkbox" class="checkbox" id="Text" value="Text">
-                                                        <label for="Text">Text</label>
-                                        </div>
-                                        <div class="checkboxes">
-                                                <Input type="checkbox" class="checkbox" id="Objects" value="Objects">
-                                                        <label for="Objects">Objects</label>
-                                        </div>
-                                        <button type="button" id="Batch" onclick="analyzeImage()">Analyze</button>
                                 </div>
                                 <div class="Results">
                                         <h3 class="SectionsHeader">Results</h3>
