@@ -95,7 +95,9 @@ function displayResults(tasks, result)
                                 console.log('descriptions: ' + `${queryTable[i].descriptor}: ` + result.data[section][j][queryTable[i].descriptor]);
                                 sectionInfo.innerText = sectionInfo.innerText + result.data[section][j][queryTable[i].descriptor] + ", ";
                         }
-                        sectionInfo.innerText.slice(0, sectionInfo.innerText.length - 2);
+                        sectionInfo.innerText = sectionInfo.innerText.slice(0, sectionInfo.innerText.length - 2);
+                        console.log(sectionHeader.innerText);
+                        console.log(sectionInfo.innerText)
                         resultDiv.appendChild(sectionInfo);
                 }
         }

@@ -38,6 +38,7 @@ input
 }
 .currentImage
 {
+    flex: 4;
     margin: 10px;
     display: flex;
     flex-direction: column;
@@ -45,6 +46,7 @@ input
 }
 .buttons
 {
+    flex: 1;
     margin: 10px;
     display: flex;
     flex-direction: column;
@@ -62,6 +64,8 @@ input
 }
 .Results
 {
+    flex: 4;
+    margin: 10px;
     display: flex;
     flex-direction: column;
 }
