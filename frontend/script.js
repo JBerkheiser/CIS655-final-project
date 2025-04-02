@@ -90,13 +90,13 @@ function displayResults(tasks, result)
                         resultDiv.appendChild(sectionHeader);
 
                         const section = queryTable[i].result;
-                        if (result[section]) 
+                        if (result.data[section]) 
                         {
-                                for (var j = 0; j < result[section].length; j++) 
+                                for (var j = 0; j < result.data[section].length; j++) 
                                 {
+                                        console.log('descriptions: ' + `${queryTable[i].descriptor}: ` + result.data[section][j][queryTable[i].descriptor]);
                                         const sectionInfo = document.createElement('p');
-                                        sectionInfo.innerText = `${queryTable[i].descriptor}: ` + result[section][j][queryTable[i].descriptor];
-                                        console.log("descriptions: " + `${queryTable[i].descriptor}: ` + result[section][j][queryTable[i].descriptor]);
+                                        sectionInfo.innerText = result.data[section][j][queryTable[i].descriptor];
                                         resultDiv.appendChild(sectionInfo);
                                 }
                         }

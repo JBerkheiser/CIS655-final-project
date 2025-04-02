@@ -60,6 +60,17 @@ input
     margin: 0px;
     margin-right: 5px;
 }
+.Results
+{
+    display: flex;
+    flex-direction: column;
+}
+.scrollableResults
+{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
 .bottomPage
 {
     flex: 1;
