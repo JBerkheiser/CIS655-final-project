@@ -32,7 +32,7 @@ def getData(task, annotations):
             task_data["sorrowLikelihood"] = annotation.sorrow_likelihood
             task_data["angerLikelihood"] = annotation.anger_likelihood
             task_data["surpriseLikelihood"] = annotation.surprise_likelihood
-            task_data["underExposedLikelihood"] = annotation.underExposed_likelihood
+            task_data["underExposedLikelihood"] = annotation.under_exposed_likelihood
             task_data["blurredLikelihood"] = annotation.blurred_likelihood
             task_data["headwearLikelihood"] = annotation.headwear_likelihood
         elif task == "LANDMARK_DETECTION":
