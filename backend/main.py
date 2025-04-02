@@ -32,7 +32,7 @@ def getImageDescription() -> vision.EntityAnnotation:
     response = client.annotate_image({"image": image, "features": features})
     data = response.logo_annotations
     print("Results: ", data)
-    return data
+    return jsonify({"data": data})
 
 if __name__ == "__main__":
     app.run(host="localhost", port=8080, debug=True)
