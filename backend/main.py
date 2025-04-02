@@ -5,6 +5,15 @@ from google.cloud import vision
 app = Flask(__name__)
 CORS(app)
 
+RESPONSE_TABLE = {
+    'LABEL_DETECTION': 'label_annotations',
+    'FACE_DETECTION': 'face_annotations',
+    'LANDMARK_DETECTION': 'landmark_annotations',
+    'LOGO_DETECTION': 'logo_annotations',
+    'DOCUMENT_TEXT_DETECTION': 'text_annotations',
+    'OBJECT_LOCALIZATION': 'localized_object_annotations'
+}
+
 @app.route("/get-image-description", methods=["POST"])
 def getImageDescription() -> vision.EntityAnnotation:
     if "file" not in request.files:
@@ -30,7 +39,14 @@ def getImageDescription() -> vision.EntityAnnotation:
 
     client = vision.ImageAnnotatorClient()
     response = client.annotate_image({"image": image, "features": features})
-    data = response.responses
+    
+    data = {}
+    for task in tasks:
+        if task in RESPONSE_TABLE:
+            result = RESPONSE_TABLE[task]
+            if hasattr(response, result):
+                data[result] = getattr(response, result)
+    
     print("Results: ", data)
     return jsonify({"data": data})
 
