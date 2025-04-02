@@ -38,7 +38,8 @@ def getData(task, annotations):
         elif task == "LANDMARK_DETECTION":
             task_data["description"] = annotation.description
             task_data["score"] = annotation.score
-            task_data["location"] = annotation.locations
+            task_data["latitude"] = annotation.locations[0].latlng.latitude
+            task_data["longitude"] = annotation.locations[0].latlng.longitude
         elif task == "DOCUMENT_TEXT_DETECTION":
             task_data["description"] = annotation.description
         elif task == "OBJECT_LOCALIZATION":

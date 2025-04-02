@@ -57,7 +57,6 @@ async function analyzeImage()
                 })
                 const result = await response.json();
                 console.log("Server Response:", result);
-                document.getElementById("Output").innerText = result;
         } catch(error)
         {
                 console.error("Error fetching description:", error);
