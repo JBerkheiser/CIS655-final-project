@@ -3,3 +3,4 @@ flask-cors
 requests
 google-cloud-vision
 google-cloud-aiplatform
+python-magic
