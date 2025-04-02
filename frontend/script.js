@@ -1,6 +1,5 @@
 var queryTable = [
         {id: "LABEL_DETECTION", checked: 0, result: "label_annotations", text: "Labels", descriptor: "description"},
-        {id: "FACE_DETECTION", checked: 0, result: "face_annotations", text: "Facial Features"},
         {id: "LANDMARK_DETECTION", checked: 0, result: "landmark_annotations", text: "Landmarks", descriptor: "description"},
         {id: "LOGO_DETECTION", checked: 0, result: "logo_annotations", text: "Logos", descriptor: "description"},
         {id: "DOCUMENT_TEXT_DETECTION", checked: 0, result: "text_annotations", text: "Text", descriptor: "description"},

@@ -7,7 +7,6 @@ CORS(app)
 
 RESPONSE_TABLE = {
     'LABEL_DETECTION': 'label_annotations',
-    'FACE_DETECTION': 'face_annotations',
     'LANDMARK_DETECTION': 'landmark_annotations',
     'LOGO_DETECTION': 'logo_annotations',
     'DOCUMENT_TEXT_DETECTION': 'text_annotations',
@@ -22,19 +21,6 @@ def getData(task, annotations):
         if task == "LABEL_DETECTION" or task == "LOGO_DETECTION":
             task_data["description"] = annotation.description
             task_data["score"] = annotation.score
-        elif task == "FACE_DETECTION":
-            task_data["rollAngle"] = annotation.roll_angle
-            task_data["panAngle"] = annotation.pan_angle
-            task_data["tiltAngle"] = annotation.tilt_angle
-            task_data["detectionConfidence"] = annotation.detection_confidence
-            task_data["landmarkingConfidence"] = annotation.landmarking_confidence
-            task_data["joyLikelihood"] = annotation.joy_likelihood
-            task_data["sorrowLikelihood"] = annotation.sorrow_likelihood
-            task_data["angerLikelihood"] = annotation.anger_likelihood
-            task_data["surpriseLikelihood"] = annotation.surprise_likelihood
-            task_data["underExposedLikelihood"] = annotation.under_exposed_likelihood
-            task_data["blurredLikelihood"] = annotation.blurred_likelihood
-            task_data["headwearLikelihood"] = annotation.headwear_likelihood
         elif task == "LANDMARK_DETECTION":
             task_data["description"] = annotation.description
             task_data["score"] = annotation.score
