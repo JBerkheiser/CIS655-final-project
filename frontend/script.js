@@ -89,13 +89,14 @@ function displayResults(tasks, result)
                         sectionHeader.innerText = queryTable[i].text;
                         resultDiv.appendChild(sectionHeader);
 
+                        const sectionInfo = document.createElement('p');
                         for (var j = 0; j < result.data[section].length; j++) 
                         {
                                 console.log('descriptions: ' + `${queryTable[i].descriptor}: ` + result.data[section][j][queryTable[i].descriptor]);
-                                const sectionInfo = document.createElement('p');
-                                sectionInfo.innerText = result.data[section][j][queryTable[i].descriptor];
-                                resultDiv.appendChild(sectionInfo);
+                                sectionInfo.innerText = sectionInfo.innerText + result.data[section][j][queryTable[i].descriptor] + ", ";
                         }
+                        sectionInfo.innerText.slice(0, sectionInfo.innerText.length - 2);
+                        resultDiv.appendChild(sectionInfo);
                 }
         }
 }
