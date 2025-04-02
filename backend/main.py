@@ -14,7 +14,7 @@ def getImageDescription() -> vision.EntityAnnotation:
         return jsonify({"error": "No file part"}), 400
     
     tasks = request.form.getlist('tasks')
-    tasks = tasks[0].split(', ')
+    tasks = tasks[0].split(',')
     if not tasks:
         return jsonify({"error": "No tasks selected"}), 400
     
