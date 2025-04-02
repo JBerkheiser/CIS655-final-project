@@ -57,7 +57,7 @@ async function analyzeImage()
                 })
                 const result = await response.json();
                 console.log("Server Response:", result);
-                displayResults(detectionTasks, result);
+                displayResults(result);
         } catch(error)
         {
                 console.error("Error fetching description:", error);
@@ -90,6 +90,7 @@ function displayResults(result)
 
                 const sectionInfo = document.createElement('p');
                 sectionInfo.innerText = result.description
+                resultDiv.appendChild(sectionInfo);
         }
         for(var i = 0; i < queryTable.length; i++)
         {
