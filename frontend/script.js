@@ -86,6 +86,7 @@ function displayResults(tasks, result)
                 if(result.data[section])
                 {
                         const sectionHeader = document.createElement('h4');
+                        sectionHeader.className = "ResultsSubheader";
                         sectionHeader.innerText = queryTable[i].text;
                         resultDiv.appendChild(sectionHeader);
 

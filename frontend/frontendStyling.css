@@ -43,6 +43,7 @@ input
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
 }
 .buttons
 {
@@ -69,11 +70,19 @@ input
     display: flex;
     flex-direction: column;
 }
+.SectionsHeader
+{
+    text-align: center;
+}
+.ResultsSubheader
+{
+    margin-bottom: 0;
+}
 .scrollableResults
 {
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
+    margin-left: 15px;
 }
 .bottomPage
 {
