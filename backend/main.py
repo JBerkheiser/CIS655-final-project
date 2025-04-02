@@ -30,7 +30,7 @@ def getImageDescription() -> vision.EntityAnnotation:
 
     client = vision.ImageAnnotatorClient()
     response = client.annotate_image({"image": image, "features": features})
-    data = response.logo_annotations
+    data = response.responses
     print("Results: ", data)
     return jsonify({"data": data})
 
