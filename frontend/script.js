@@ -83,22 +83,19 @@ function displayResults(tasks, result)
 
         for(var i = 0; i < queryTable.length; i++)
         {
-                if(queryTable[i].checked === true)
+                const section = queryTable[i].result;
+                if(result.data[section])
                 {
                         const sectionHeader = document.createElement('h4');
                         sectionHeader.innerText = queryTable[i].text;
                         resultDiv.appendChild(sectionHeader);
 
-                        const section = queryTable[i].result;
-                        if (result.data[section]) 
+                        for (var j = 0; j < result.data[section].length; j++) 
                         {
-                                for (var j = 0; j < result.data[section].length; j++) 
-                                {
-                                        console.log('descriptions: ' + `${queryTable[i].descriptor}: ` + result.data[section][j][queryTable[i].descriptor]);
-                                        const sectionInfo = document.createElement('p');
-                                        sectionInfo.innerText = result.data[section][j][queryTable[i].descriptor];
-                                        resultDiv.appendChild(sectionInfo);
-                                }
+                                console.log('descriptions: ' + `${queryTable[i].descriptor}: ` + result.data[section][j][queryTable[i].descriptor]);
+                                const sectionInfo = document.createElement('p');
+                                sectionInfo.innerText = result.data[section][j][queryTable[i].descriptor];
+                                resultDiv.appendChild(sectionInfo);
                         }
                 }
         }
