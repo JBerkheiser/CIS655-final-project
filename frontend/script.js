@@ -57,7 +57,7 @@ async function analyzeImage()
                 })
                 const result = await response.json();
                 console.log("Server Response:", result);
-                document.getElementById("Output").innerText = "Most likely: " + result['labels'][0]['description'] + " with a score of: " + result['labels'][0]['score'];
+                document.getElementById("Output").innerText = result;
         } catch(error)
         {
                 console.error("Error fetching description:", error);
