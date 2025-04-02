@@ -41,11 +41,9 @@ def getData(task, annotations):
             task_data["location"] = annotation.locations
         elif task == "DOCUMENT_TEXT_DETECTION":
             task_data["description"] = annotation.description
-            task_data["boundingPoly"] = annotation.bounding_poly
         elif task == "OBJECT_LOCALIZATION":
             task_data["name"] = annotation.name
             task_data["score"] = annotation.score
-            task_data["boundingPoly"] = annotation.bounding_poly
         
         result.append(task_data)
     return result
