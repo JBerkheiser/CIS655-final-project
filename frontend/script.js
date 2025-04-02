@@ -57,12 +57,11 @@ async function analyzeImage()
                 })
                 const result = await response.json();
                 console.log("Server Response:", result);
+                displayResults(detectionTasks, result);
         } catch(error)
         {
                 console.error("Error fetching description:", error);
         }
-
-        displayResults(detectionTasks, result);
 }
 
 function getCheckedBoxes()
