@@ -96,6 +96,7 @@ function displayResults(tasks, result)
                                 {
                                         const sectionInfo = document.createElement('p');
                                         sectionInfo.innerText = `${queryTable[i].descriptor}: ` + result[section][j][queryTable[i].descriptor];
+                                        console.log("descriptions: " + `${queryTable[i].descriptor}: ` + result[section][j][queryTable[i].descriptor]);
                                         resultDiv.appendChild(sectionInfo);
                                 }
                         }
