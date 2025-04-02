@@ -1,10 +1,10 @@
 var queryTable = [
-        {id: "LABEL_DETECTION", checked: 0, result: "label_annotations", text: "Labels"},
+        {id: "LABEL_DETECTION", checked: 0, result: "label_annotations", text: "Labels", descriptor: "description"},
         {id: "FACE_DETECTION", checked: 0, result: "face_annotations", text: "Facial Features"},
-        {id: "LANDMARK_DETECTION", checked: 0, result: "landmark_annotations", text: "Landmarks"},
-        {id: "LOGO_DETECTION", checked: 0, result: "logo_annotations", text: "Logos"},
-        {id: "DOCUMENT_TEXT_DETECTION", checked: 0, result: "text_annotations", text: "Text"},
-        {id: "OBJECT_LOCALIZATION", checked: 0, result: "localized_object_annotations", text: "Objects"},
+        {id: "LANDMARK_DETECTION", checked: 0, result: "landmark_annotations", text: "Landmarks", descriptor: "description"},
+        {id: "LOGO_DETECTION", checked: 0, result: "logo_annotations", text: "Logos", descriptor: "description"},
+        {id: "DOCUMENT_TEXT_DETECTION", checked: 0, result: "text_annotations", text: "Text", descriptor: "description"},
+        {id: "OBJECT_LOCALIZATION", checked: 0, result: "localized_object_annotations", text: "Objects", descriptor: "name"},
 ];
 
 document.getElementById('fileInput').addEventListener('change', function(event)
@@ -85,15 +85,20 @@ function displayResults(tasks, result)
         {
                 if(queryTable[i].checked === true)
                 {
-                        const section = queryTable[i].result
-                        const sectionHeader = document.createElement('p');
+                        const sectionHeader = document.createElement('h4');
                         sectionHeader.innerText = queryTable[i].text;
-
-                        const sectionInfo = document.createElement('p');
-                        sectionInfo.innerText = result[section];
-
                         resultDiv.appendChild(sectionHeader);
-                        resultDiv.appendChild(sectionInfo);
+
+                        const section = queryTable[i].result;
+                        if (result[section]) 
+                        {
+                                for (var j = 0; j < result[section].length; j++) 
+                                {
+                                        const sectionInfo = document.createElement('p');
+                                        sectionInfo.innerText = `${queryTable[i].descriptor}: ` + result[section][j][queryTable[i].descriptor];
+                                        resultDiv.appendChild(sectionInfo);
+                                }
+                        }
                 }
         }
 }
