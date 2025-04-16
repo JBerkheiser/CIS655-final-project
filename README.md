@@ -11,7 +11,7 @@ project also utilized Cloud Build as a CI/CD platform.
 I used Cloud Build in this project so I could use Visual Studio Code as my text editor instead of vim, and so I could keep a repository of my work.  I created the repository, and enabled Cloud Build on my project.  Then, I had to link the repo to my project, and add a trigger, so that any time I pushed to the project, the trigger would notice and initialize a build of the project.  To correctly build the project, cloudbuild required a document in my project called "cloudbuild.yaml", which specified the build steps required for the project.  Since I wanted both my frontend and backend in the same repository, it required two steps. 
 
 The first step was for the frontend, hosted on a Virtual Machine.  The steps are described below.  I had to cd into the correct directory, and pull the most recent changes.  Then, because the virtual machine looked for index.html, the script, and the stylesheet in /var/www/html, I had to compy those document into that directory.  Then the machine could be restarted.  
-'''yaml
+'''
 - name: "gcr.io/cloud-builders/gcloud"
   timeout: "300s"
   args:
@@ -31,7 +31,7 @@ The first step was for the frontend, hosted on a Virtual Machine.  The steps are
 '''
 
 For the backend, it was as easy as deploying the app.yaml file.  It was imperative however, that the service account used had the correct permissions, or it would not build
-'''yaml
+'''
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
   args: ['-c', 'gcloud app deploy --account=automated-build-account@cis655-vision-api-project.iam.gserviceaccount.com ./backend/app.yaml']
